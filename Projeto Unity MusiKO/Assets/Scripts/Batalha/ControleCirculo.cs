@@ -19,6 +19,7 @@ public class ControleCirculo : MonoBehaviour {
 	public void SelecionarAtaque(){
 
 		GameMasterCombate.Opcao = 1;
+		AjudanteMestre.ClicarAtaque();
 
 	}
 
