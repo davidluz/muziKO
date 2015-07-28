@@ -63,18 +63,4 @@ Assets/AssetStoreTools*
 *.log
 *.bin
 *.mdb
-Projeto Unity MusiKO/Library/assetDatabase3
-*.dwlt
-Projeto Unity MusiKO/Library/expandedItems
-*.asset
-Projeto Unity MusiKO/Library/metadata/00/00000000000000004000000000000000
-*.dll
-Projeto Unity MusiKO/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
-*.mdb
-Projeto Unity MusiKO/Library/ScriptAssemblies/BuiltinAssemblies.stamp
-*.log
-Projeto Unity MusiKO/Library/shadercompiler-64bit-1.log
-*.sln
-Projeto Unity MusiKO/MusiKO.sln
-*.userprefs
-Projeto Unity MusiKO/MusiKO.userprefs
+Projeto Unity MusiKO

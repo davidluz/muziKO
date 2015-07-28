@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{886FA29F-948E-FAF1-D864-49A2BF7DBA0E}</ProjectGuid>
+	<ProjectGuid>{C3567CD7-12E4-E89F-EF08-5A5759154F05}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -55,6 +55,11 @@
      <Compile Include="Assets\Scripts\Controladores\GameMasterFora.cs" />
      <Compile Include="Assets\Scripts\NPCs\NPCNormal.cs" />
      <Compile Include="Assets\Scripts\Personagem\ForaCombate.cs" />
+     <Compile Include="Assets\VilaMedievalAssets\FrameHate\TopViewMobileTown\Scripts\Click.cs" />
+     <Compile Include="Assets\VilaMedievalAssets\FrameHate\TopViewMobileTown\Scripts\Movement.cs" />
+     <Compile Include="Assets\VilaMedievalAssets\Standard Assets\Water (Basic)\Sources\Scripts\WaterSimple.cs" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\VilaMedievalAssets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -67,6 +72,12 @@
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{7B00112C-643D-49E8-F662-54BD35144F62}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{DD158514-3885-81BA-55A5-2ECDEBD2A121}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

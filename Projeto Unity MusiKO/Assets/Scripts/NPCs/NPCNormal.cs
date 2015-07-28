@@ -5,19 +5,29 @@ using UnityEngine.UI;
 public class NPCNormal : MonoBehaviour {
 	public bool SubRotinas = true;
 	public NavMeshAgent AuxiliarNavMesh;
-	public Vector3 PosicaoInicial;
 	public int Comportamento = 0;
 	public Text NomePersonagem;
 	public Text AjudaTexto;
 	public Image Moldura;
-	public int ContadorFalas = 0;
 	public int NumeroDeFalas = 0;
 	public string [] Falas;
 	public string Nome;
+
 	public float Timer = 0.0f;
+
+	public bool questGiver;
+
+	private GameMasterFora gameMaster;
+	private int ContadorFalas = 0;
+	private Vector3 PosicaoInicial;
 
 	void Start(){
 		PosicaoInicial = gameObject.transform.position;
+		gameMaster = FindObjectOfType<GameMasterFora> ();
+
+		gameObject.transform.FindChild("Quest").gameObject.SetActive(questGiver);
+
+		//enabled = questGiver;	
 	}
 	void Update(){
 
@@ -48,7 +58,7 @@ public class NPCNormal : MonoBehaviour {
 	public void Evento(int numeroEvento){
 		switch(numeroEvento){
 		case 0:
-				print("Teste Evento");
+				print("Teste Evento");				
 				break;
 		}//fim switch
 	}//fim evento
@@ -57,16 +67,20 @@ public class NPCNormal : MonoBehaviour {
 		GameMasterFora.Livre = false;
 		NomePersonagem.text = Nome;
 		if (ContadorFalas < NumeroDeFalas) {
-			int Comprimento = Falas[ContadorFalas].Length;
+			int Comprimento = Falas [ContadorFalas].Length;
 			AjudaTexto.text = "";
-			for(int x = 0;x<Comprimento;x++){
-				AjudaTexto.text =AjudaTexto.text+Falas[ContadorFalas][x];
-				yield return new WaitForSeconds(0.01f);
+			for (int x = 0; x<Comprimento; x++) {
+				AjudaTexto.text = AjudaTexto.text + Falas [ContadorFalas] [x];
+				yield return new WaitForSeconds (0.01f);
 			}
 
-			print(Falas[ContadorFalas]);
+			print (Falas [ContadorFalas]);
 			ContadorFalas++;
 			
+		} else {
+			GameMasterFora.Livre = true;
+			gameMaster.Painel.SetActive(false);
+			ContadorFalas = 0;
 		}
 	}//falar
 }
