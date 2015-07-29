@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class GameMasterFora : MonoBehaviour {
 	
 	public ControladorQuests.questChain[] presentChains;
-	public static bool Livre = true;
 
 	private int offsetToNPC = 2;
 	private GameObject Personagem;
@@ -17,6 +16,10 @@ public class GameMasterFora : MonoBehaviour {
 
 	[HideInInspector]
 	public GameObject Painel;
+	[HideInInspector]
+	public bool bWriting = false;
+	[HideInInspector]
+	public bool Livre = true;
 	
 	void Start(){
 		Painel = GameObject.Find ("ChatPanel");
@@ -61,7 +64,7 @@ public class GameMasterFora : MonoBehaviour {
 			Npcs[0].GetComponent<NPCNormal>().Evento(0);
 		}
 
-		if (Input.GetMouseButtonUp (0) && !Livre && EngagedNPC != null) {
+		if (Input.GetMouseButtonUp (0) && !Livre && EngagedNPC != null && !bWriting) {
 			StartCoroutine(EngagedNPC.Falar());
 		}
 

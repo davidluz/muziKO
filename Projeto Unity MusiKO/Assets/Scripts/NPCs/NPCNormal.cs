@@ -30,7 +30,7 @@ public class NPCNormal : MonoBehaviour {
 	}
 	void Update(){
 
-		if (GameMasterFora.Livre == true) {
+		if (gameMaster.Livre == true) {
 			if(SubRotinas==true){
 				Timer += Time.deltaTime;
 				
@@ -63,7 +63,8 @@ public class NPCNormal : MonoBehaviour {
 	}//fim evento
 
 	public IEnumerator Falar(){
-		GameMasterFora.Livre = false;
+		gameMaster.bWriting = true;
+		gameMaster.Livre = false;
 		NomePersonagem.text = Nome;
 		int NumeroDeFalas = Falas.Length;
 		if (ContadorFalas < NumeroDeFalas) {
@@ -76,9 +77,10 @@ public class NPCNormal : MonoBehaviour {
 
 			print (Falas [ContadorFalas]);
 			ContadorFalas++;
+			gameMaster.bWriting = false;
 			
 		} else {
-			GameMasterFora.Livre = true;
+			gameMaster.Livre = true;
 			gameMaster.Painel.SetActive(false);
 			ContadorFalas = 0;
 			gameMaster.resetEngagedNPC();
@@ -86,7 +88,7 @@ public class NPCNormal : MonoBehaviour {
 			if (questGiver){
 				questGiver = !questGiver;
 				gameObject.transform.FindChild("Quest").gameObject.SetActive(questGiver);
-				NumeroDeFalas = 1;
+				Falas = new string[1];
 				Falas[0] = "Esta missao ja foi aceita";
 
 				for(int i=0;i<gameMaster.presentChains.Length;i++){
