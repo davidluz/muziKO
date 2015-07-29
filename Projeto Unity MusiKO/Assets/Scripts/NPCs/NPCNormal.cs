@@ -9,13 +9,14 @@ public class NPCNormal : MonoBehaviour {
 	public Text NomePersonagem;
 	public Text AjudaTexto;
 	public Image Moldura;
-	public int NumeroDeFalas = 0;
 	public string [] Falas;
 	public string Nome;
 
 	public float Timer = 0.0f;
 
 	public bool questGiver;
+	public string chainToStart = "";
+
 
 	private GameMasterFora gameMaster;
 	private int ContadorFalas = 0;
@@ -26,8 +27,6 @@ public class NPCNormal : MonoBehaviour {
 		gameMaster = FindObjectOfType<GameMasterFora> ();
 
 		gameObject.transform.FindChild("Quest").gameObject.SetActive(questGiver);
-
-		//enabled = questGiver;	
 	}
 	void Update(){
 
@@ -66,6 +65,7 @@ public class NPCNormal : MonoBehaviour {
 	public IEnumerator Falar(){
 		GameMasterFora.Livre = false;
 		NomePersonagem.text = Nome;
+		int NumeroDeFalas = Falas.Length;
 		if (ContadorFalas < NumeroDeFalas) {
 			int Comprimento = Falas [ContadorFalas].Length;
 			AjudaTexto.text = "";
@@ -81,6 +81,23 @@ public class NPCNormal : MonoBehaviour {
 			GameMasterFora.Livre = true;
 			gameMaster.Painel.SetActive(false);
 			ContadorFalas = 0;
+			gameMaster.resetEngagedNPC();
+
+			if (questGiver){
+				questGiver = !questGiver;
+				gameObject.transform.FindChild("Quest").gameObject.SetActive(questGiver);
+				NumeroDeFalas = 1;
+				Falas[0] = "Esta missao ja foi aceita";
+
+				for(int i=0;i<gameMaster.presentChains.Length;i++){
+					if(gameMaster.presentChains[i].chainName != chainToStart)
+						continue;
+
+					gameMaster.presentChains[i].chainActive = true;
+					gameMaster.presentChains[i].chainSteps[0].stepActive = true;
+				}
+			}
+
 		}
 	}//falar
 }

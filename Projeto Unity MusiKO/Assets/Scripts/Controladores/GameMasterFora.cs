@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameMasterFora : MonoBehaviour {
 	
-	public GameObject Painel;
+	public ControladorQuests.questChain[] presentChains;
 	public static bool Livre = true;
 
 	private int offsetToNPC = 2;
@@ -14,8 +14,13 @@ public class GameMasterFora : MonoBehaviour {
 	private GameObject [] Npcs;
 	private NPCNormal[] AjudanteNpcs;
 	private float Timer = 0;
+
+	[HideInInspector]
+	public GameObject Painel;
 	
 	void Start(){
+		Painel = GameObject.Find ("ChatPanel");
+
 		Personagem = GameObject.FindGameObjectWithTag ("Player");
 		Npcs = GameObject.FindGameObjectsWithTag ("NPC");
 		numeroNpcs = Npcs.Length;
@@ -61,4 +66,9 @@ public class GameMasterFora : MonoBehaviour {
 		}
 
 	}
+
+	public void resetEngagedNPC(){
+		EngagedNPC = null;
+	}
+
 }
