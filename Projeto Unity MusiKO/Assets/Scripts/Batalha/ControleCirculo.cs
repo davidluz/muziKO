@@ -30,6 +30,7 @@ public class ControleCirculo : MonoBehaviour {
 
 	public void SelecionarMagia(){
 		GameMasterCombate.Opcao = 3;
+		AjudanteMestre.ClicarMagia();
 	}
 
 }

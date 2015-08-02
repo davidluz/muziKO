@@ -17,6 +17,7 @@ public class ControladorTurno : MonoBehaviour {
 	public int QuantidadeAtaque = 1;
 	public int posicaoX = 0;
 	public int posicaoY = 0;
+	public int[] ListaMagias;
 
 
 	//public void

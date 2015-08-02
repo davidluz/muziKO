@@ -3,6 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameMasterCombate : MonoBehaviour {
+	public GameObject[] TodasMagias;
+	public int ContadorMagias;
+	public Magias[] AjudanteMagias;
+	public static int NumeroMagia = 0;
+	public bool prontoMagia = false;
+	//public Image[] ImagensDasMagias;
+
+	public GameObject ContainerMagias;
+	public Image[] ContainerIcones;
+
 	public Vector3 AjudanteDaCamera;
 	public float VelocidadeCamera;
 	public Camera MinhaCamera;
@@ -28,6 +38,8 @@ public class GameMasterCombate : MonoBehaviour {
 		AjudanteDaCamera = new Vector3(MinhaCamera.transform.position.x,MinhaCamera.transform.position.y,MinhaCamera.transform.position.z);
 		AjudanteTurno = new float[ContadorPersonagens];
 		AjudanteNavMeshPersonagens = new NavMeshAgent[ContadorPersonagens];
+		AjudanteMagias = new Magias[ContadorMagias];
+		//ContainerIcones = new Image[ContadorMagias];
 		for (int x = 0; x<ContadorPersonagens; x++) {
 			AjudanteTurno[x] = -429.0f; 
 			AjudantePersonagens[x] = Personagens[x].GetComponent<ControladorTurno>();
@@ -39,6 +51,11 @@ public class GameMasterCombate : MonoBehaviour {
 			PersonagensImg[x].name = x.ToString();
 
 			PersonagensImg[x].sprite = AjudantePersonagens[x].MinhaFoto;
+		}
+		for(int x = 0;x<ContadorMagias;x++){
+			AjudanteMagias[x] = TodasMagias[x].GetComponent<Magias>();
+			//ImagensDasMagias[x].sprite = AjudanteMagias[x].Icone.sprite;
+
 		}
 
 	}
@@ -85,9 +102,44 @@ public class GameMasterCombate : MonoBehaviour {
 
 		}
 	}//fim Update
+	public void ClicarMagia(){
+		ContainerMagias.SetActive(true);
+
+		for(int x = 0;x<4;x++){
+
+			ContainerIcones[x].sprite = AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[x]].Icone;
+		}
+	}
+	public void ClicarMagiaEspecifica(){
+
+		for(int ajud = 0;ajud<GerarTerrenos.MatrizTerrenos.GetLength(0);ajud++){
+			for(int ajud1 = 0;ajud1<GerarTerrenos.MatrizTerrenos.GetLength(1);ajud1++){
+				GerarTerrenos.MatrizLuz[ajud,ajud1].enabled = false;
+				if (Mathf.Abs(AjudantePersonagens[Turno].posicaoX-ajud)<=AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[NumeroMagia]].Alcance){
+					if (Mathf.Abs(AjudantePersonagens[Turno].posicaoY-ajud1)<=AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[NumeroMagia]].Alcance){
+						
+						GerarTerrenos.MatrizLuz[ajud,ajud1].enabled = true;
+						if((AjudantePersonagens[Turno].posicaoX==ajud)&&(AjudantePersonagens[Turno].posicaoY==ajud1)){
+							GerarTerrenos.MatrizLuz[ajud,ajud1].enabled = false;
+						}else{
+							GerarTerrenos.MatrizLuz[ajud,ajud1].color  = Color.yellow;
+						}
+						for(int ajud2 =0;ajud2<ContadorPersonagens;ajud2++){
+							if((AjudantePersonagens[ajud2].posicaoX==ajud)&&(AjudantePersonagens[ajud2].posicaoY==ajud1)&&(AjudantePersonagens[ajud2].SouEu==false)){
+								GerarTerrenos.MatrizLuz[ajud,ajud1].color  = Color.red;
+							}
+						}
+						
+					}
+				}
+				
+			}
+		}//fimfor
+		prontoMagia = true;
+	}
 
 	public void ClicarAtaque(){
-
+		ContainerMagias.SetActive(false);
 		for(int ajud = 0;ajud<GerarTerrenos.MatrizTerrenos.GetLength(0);ajud++){
 			for(int ajud1 = 0;ajud1<GerarTerrenos.MatrizTerrenos.GetLength(1);ajud1++){
 				GerarTerrenos.MatrizLuz[ajud,ajud1].enabled = false;
@@ -116,7 +168,7 @@ public class GameMasterCombate : MonoBehaviour {
 
 	}
 	public void ClicarMover(){
-
+		ContainerMagias.SetActive(false);
 		for(int ajud = 0;ajud<GerarTerrenos.MatrizTerrenos.GetLength(0);ajud++){
 			for(int ajud1 = 0;ajud1<GerarTerrenos.MatrizTerrenos.GetLength(1);ajud1++){
 				GerarTerrenos.MatrizLuz[ajud,ajud1].enabled = false;
@@ -184,9 +236,12 @@ public class GameMasterCombate : MonoBehaviour {
 								}//fimfor
 								
 								prontoMover = false;
+								prontoMagia = false;
+								prontoAtacar = false;
 								Rodando = true;
 								AjudanteTurno[Turno] = -429;
 								CirculoAcao.SetActive(false);
+								ContainerMagias.SetActive(false);
 								
 								//Anda
 							}
@@ -229,11 +284,14 @@ public class GameMasterCombate : MonoBehaviour {
 								}//fimfor
 								
 								prontoMover = false;
+								prontoMagia = false;
+								prontoAtacar = false;
 								Rodando = true;
 								AjudanteTurno[Turno] = -429;
 								print(AjudantePersonagens[Turno].Nome+" Moveu-se");
 								CirculoAcao.SetActive(false);
-								
+								ContainerMagias.SetActive(false);
+
 								//Anda
 							}
 							
@@ -243,6 +301,58 @@ public class GameMasterCombate : MonoBehaviour {
 
 			}
 		}else if(Opcao==3){
+
+			if(prontoMagia==true){
+				float x = xTerr/5;
+				float z = zTerr/5;
+				bool podeIr = false;
+				int posicaoAtacado = 0;
+				for(int ajud = 0;ajud<ContadorPersonagens;ajud++){
+					if((ajud!=Turno)&&(AjudantePersonagens[ajud].posicaoX==x)&&(AjudantePersonagens[ajud].posicaoY==z)){
+						podeIr = true;
+						posicaoAtacado = ajud;
+					}
+				}//fimfor
+				if(podeIr==true){
+					if (Mathf.Abs(AjudantePersonagens[Turno].posicaoX-x)<=AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[NumeroMagia]].Alcance){
+						if (Mathf.Abs(AjudantePersonagens[Turno].posicaoY-z)<=AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[NumeroMagia]].Alcance){
+							
+							
+							if((AjudantePersonagens[Turno].posicaoX==x)&&(AjudantePersonagens[Turno].posicaoY==z)){
+								//Nao Faz Nada
+							}else{
+								
+								//codigo ataque Magico, Todas as verificaçoes de dano e diversas formulas de dano entram aqui
+								//inserir formula ataque
+								//inserir Todos as outras coisas para
+								AjudantePersonagens[posicaoAtacado].HP = AjudantePersonagens[posicaoAtacado].HP-10;
+								
+								print(AjudantePersonagens[Turno].Nome+" Soltou a Magia "+AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[NumeroMagia]].Nome+" em "+AjudantePersonagens[posicaoAtacado].Nome);
+								
+								for(int ajud = 0;ajud<GerarTerrenos.MatrizTerrenos.GetLength(0);ajud++){
+									for(int ajud1 = 0;ajud1<GerarTerrenos.MatrizTerrenos.GetLength(1);ajud1++){
+										GerarTerrenos.MatrizLuz[ajud,ajud1].enabled = false;	
+									}
+									
+								}//fimfor
+								
+								prontoMover = false;
+								prontoMagia = false;
+								prontoAtacar = false;
+								Rodando = true;
+								AjudanteTurno[Turno] = -429;
+								CirculoAcao.SetActive(false);
+								ContainerMagias.SetActive(false);
+								
+								//Anda
+							}
+							
+						}
+					}
+				}
+				
+			}//fim pronto Magia
+
 		}
 
 	}//fim clicar terreno
