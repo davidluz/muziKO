@@ -224,7 +224,7 @@ public class GameMasterCombate : MonoBehaviour {
 								//codigo ataque
 								//inserir formula ataque
 								//inserir Todos as outras coisas para
-								AjudantePersonagens[posicaoAtacado].HP = AjudantePersonagens[posicaoAtacado].HP-10;
+								AjudantePersonagens[posicaoAtacado].TirarVida(10);
 
 								print(AjudantePersonagens[Turno].Nome+" Atacou "+AjudantePersonagens[posicaoAtacado].Nome);
 
@@ -325,7 +325,7 @@ public class GameMasterCombate : MonoBehaviour {
 								//codigo ataque Magico, Todas as verificaçoes de dano e diversas formulas de dano entram aqui
 								//inserir formula ataque
 								//inserir Todos as outras coisas para
-								AjudantePersonagens[posicaoAtacado].HP = AjudantePersonagens[posicaoAtacado].HP-10;
+								AjudantePersonagens[posicaoAtacado].TirarVida(10);
 								
 								print(AjudantePersonagens[Turno].Nome+" Soltou a Magia "+AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[NumeroMagia]].Nome+" em "+AjudantePersonagens[posicaoAtacado].Nome);
 								
