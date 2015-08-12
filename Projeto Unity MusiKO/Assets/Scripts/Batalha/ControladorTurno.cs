@@ -27,7 +27,9 @@ public class ControladorTurno : MonoBehaviour {
 	public Text ExemploTextoCombate;
 
 
+
 	void Start(){
+	
 
 		ControladorVida = Instantiate(ExemploSlider) as Slider;
 		ControladorVida.transform.SetParent(AjudanteCanvas.transform);
@@ -36,6 +38,7 @@ public class ControladorTurno : MonoBehaviour {
 		ControladorVida.name = Nome.ToString();
 
 	}
+	
 
 	void Update(){
 		ControladorVida.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y+1,gameObject.transform.position.z);

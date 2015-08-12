@@ -33,6 +33,9 @@ public class GameMasterCombate : MonoBehaviour {
 	public float Timer = 0;
 	public GameObject CirculoAcao;
 
+	public GameObject PainelModelo;
+	public PainelPersonagem ajudanteainelModelo;
+
 	// Use this for initialization
 	void Start () {
 		AjudanteDaCamera = new Vector3(MinhaCamera.transform.position.x,MinhaCamera.transform.position.y,MinhaCamera.transform.position.z);
@@ -40,6 +43,9 @@ public class GameMasterCombate : MonoBehaviour {
 		AjudanteNavMeshPersonagens = new NavMeshAgent[ContadorPersonagens];
 		AjudanteMagias = new Magias[ContadorMagias];
 		//ContainerIcones = new Image[ContadorMagias];
+
+		ajudanteainelModelo = PainelModelo.GetComponent<PainelPersonagem>();
+
 		for (int x = 0; x<ContadorPersonagens; x++) {
 			AjudanteTurno[x] = -429.0f; 
 			AjudantePersonagens[x] = Personagens[x].GetComponent<ControladorTurno>();
@@ -74,6 +80,7 @@ public class GameMasterCombate : MonoBehaviour {
 					Rodando = false;
 					Turno = x;
 					PersonagensImg [x].rectTransform.anchoredPosition = new Vector2 (301, PersonagensImg [x].rectTransform.anchoredPosition.y);
+					FazerPainel(AjudantePersonagens[x].posicaoX,AjudantePersonagens[x].posicaoY);
 
 				}
 			}//fim for
@@ -197,11 +204,31 @@ public class GameMasterCombate : MonoBehaviour {
 
 
 	}//clicarMover
+
+	public void FazerPainel(float xTerr,float zTerr){
+		ajudanteainelModelo.FazerDescer();
+		int indicePersonagem = -1;
+
+		for(int x = 0;x<ContadorPersonagens;x++){
+
+			if((AjudantePersonagens[x].posicaoX==xTerr)&&(AjudantePersonagens[x].posicaoY==zTerr)){
+				indicePersonagem = x;
+			}
+
+		}
+		ajudanteainelModelo.AtualizarInformaçoes(AjudantePersonagens[indicePersonagem].Nome,AjudantePersonagens[indicePersonagem].HPMax,AjudantePersonagens[indicePersonagem].HPAtual,AjudantePersonagens[indicePersonagem].MPMax,AjudantePersonagens[indicePersonagem].MPAtual,AjudantePersonagens[indicePersonagem].MinhaFoto);
+
+		ajudanteainelModelo.FazerSubir();
+
+		//ClicarTerreno(xTerr,zTerr);
+	}
+
 	public void ClicarTerreno(float xTerr,float zTerr){
 		if(Opcao==0){
 
 		}else if(Opcao==1){
 			if(prontoAtacar==true){
+				ajudanteainelModelo.FazerDescer();
 				float x = xTerr/5;
 				float z = zTerr/5;
 				bool podeIr = false;
@@ -253,6 +280,7 @@ public class GameMasterCombate : MonoBehaviour {
 			}//fim pronto atacar
 		}else if(Opcao==2){
 			if(prontoMover==true){
+				ajudanteainelModelo.FazerDescer();
 				float x = xTerr/5;
 				float z = zTerr/5;
 				bool podeIr = true;
@@ -303,6 +331,7 @@ public class GameMasterCombate : MonoBehaviour {
 		}else if(Opcao==3){
 
 			if(prontoMagia==true){
+				ajudanteainelModelo.FazerDescer();
 				float x = xTerr/5;
 				float z = zTerr/5;
 				bool podeIr = false;
