@@ -59,7 +59,6 @@ Assets/AssetStoreTools*
 *.booproj
 *.meta
 *.info
-*.asset
 *.log
 *.bin
 *.mdb

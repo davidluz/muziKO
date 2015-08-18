@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class ForaCombate : MonoBehaviour {
-
-	public NavMeshAgent AgenteNavMesh;
 	public int Valor = 1;
 
 	private GameMasterFora gameMaster;

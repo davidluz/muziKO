@@ -211,7 +211,7 @@ function SetUpRotation (centerPos : Vector3, headPos : Vector3)
 	var centerToTopAngle = Vector3.Angle(centerRay.direction, topRay.direction);
 	
 	var heightToAngle = centerToTopAngle / (centerRayPos.y - topRayPos.y);
-
+	
 	var extraLookAngle = heightToAngle * (centerRayPos.y - centerPos.y);
 	if (extraLookAngle < centerToTopAngle)
 	{
@@ -223,6 +223,7 @@ function SetUpRotation (centerPos : Vector3, headPos : Vector3)
 		cameraTransform.rotation *= Quaternion.Euler(-extraLookAngle, 0, 0);
 	}
 }
+
 
 function GetCenterOffset ()
 {
