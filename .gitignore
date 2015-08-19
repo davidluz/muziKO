@@ -56,10 +56,6 @@ Assets/AssetStoreTools*
 *.suo
 *.tmp
 
-*.booproj
-*.meta
 
-*.log
-*.bin
 
 Projeto Unity MusiKO/ProjectSettings/ProjectVersion.txt
