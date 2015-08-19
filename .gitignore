@@ -55,11 +55,10 @@ Assets/AssetStoreTools*
 *.sln
 *.suo
 *.tmp
-*.user
-*.userprefs
+
 *.booproj
 *.meta
-*.info
+
 *.log
 *.bin
 
