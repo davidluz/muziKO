@@ -3,6 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameMasterCombate : MonoBehaviour {
+
+	public GameObject MestreMagias;
+	public ContainerMagias AjudanteMestreMagias;
+
 	public GameObject[] TodasMagias;
 	public int ContadorMagias;
 	public Magias[] AjudanteMagias;
@@ -43,6 +47,10 @@ public class GameMasterCombate : MonoBehaviour {
 		AjudanteNavMeshPersonagens = new NavMeshAgent[ContadorPersonagens];
 		AjudanteMagias = new Magias[ContadorMagias];
 		//ContainerIcones = new Image[ContadorMagias];
+
+		AjudanteMestreMagias = MestreMagias.GetComponent<ContainerMagias>();
+		ContadorMagias = AjudanteMestreMagias.Tamanho;
+		TodasMagias = AjudanteMestreMagias.ListaMagias;
 
 		ajudanteainelModelo = PainelModelo.GetComponent<PainelPersonagem>();
 
@@ -228,7 +236,7 @@ public class GameMasterCombate : MonoBehaviour {
 
 		}else if(Opcao==1){
 			if(prontoAtacar==true){
-				ajudanteainelModelo.FazerDescer();
+
 				float x = xTerr/5;
 				float z = zTerr/5;
 				bool podeIr = false;
@@ -269,6 +277,7 @@ public class GameMasterCombate : MonoBehaviour {
 								AjudanteTurno[Turno] = -429;
 								CirculoAcao.SetActive(false);
 								ContainerMagias.SetActive(false);
+								ajudanteainelModelo.FazerDescer();
 								
 								//Anda
 							}
@@ -280,7 +289,7 @@ public class GameMasterCombate : MonoBehaviour {
 			}//fim pronto atacar
 		}else if(Opcao==2){
 			if(prontoMover==true){
-				ajudanteainelModelo.FazerDescer();
+
 				float x = xTerr/5;
 				float z = zTerr/5;
 				bool podeIr = true;
@@ -319,6 +328,7 @@ public class GameMasterCombate : MonoBehaviour {
 								print(AjudantePersonagens[Turno].Nome+" Moveu-se");
 								CirculoAcao.SetActive(false);
 								ContainerMagias.SetActive(false);
+								ajudanteainelModelo.FazerDescer();
 
 								//Anda
 							}
@@ -331,7 +341,7 @@ public class GameMasterCombate : MonoBehaviour {
 		}else if(Opcao==3){
 
 			if(prontoMagia==true){
-				ajudanteainelModelo.FazerDescer();
+
 				float x = xTerr/5;
 				float z = zTerr/5;
 				bool podeIr = false;
@@ -372,6 +382,7 @@ public class GameMasterCombate : MonoBehaviour {
 								AjudanteTurno[Turno] = -429;
 								CirculoAcao.SetActive(false);
 								ContainerMagias.SetActive(false);
+								ajudanteainelModelo.FazerDescer();
 								
 								//Anda
 							}

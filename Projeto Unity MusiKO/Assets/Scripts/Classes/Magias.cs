@@ -10,6 +10,7 @@ public class Magias : MonoBehaviour {
 	public int FormulaDano;
 	public int Alcance;
 	public int DanoBase;
+	public int CustoMP;
 	public string Descricao;
 	public Sprite Icone;
 }
