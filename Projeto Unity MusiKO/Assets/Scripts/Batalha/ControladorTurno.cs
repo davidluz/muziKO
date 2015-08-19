@@ -41,6 +41,7 @@ public class ControladorTurno : MonoBehaviour {
 	
 
 	void Update(){
+
 		ControladorVida.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y+1,gameObject.transform.position.z);
 	}
 

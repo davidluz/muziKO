@@ -3,13 +3,7 @@ using System.Collections;
 
 public class ContainerArmas : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	public int Tamanho = 0;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public GameObject[] ListaArmas;
 }
