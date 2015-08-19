@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +53,15 @@
      <Compile Include="Assets\Scripts\Batalha\PainelPersonagem.cs" />
      <Compile Include="Assets\Scripts\Batalha\RodaMagias.cs" />
      <Compile Include="Assets\Scripts\Batalha\ScriptClicarTerreno.cs" />
+     <Compile Include="Assets\Scripts\Classes\Equipamentos.cs" />
      <Compile Include="Assets\Scripts\Classes\Magias.cs" />
+     <Compile Include="Assets\Scripts\Containers\ContainerAdicionais.cs" />
+     <Compile Include="Assets\Scripts\Containers\ContainerArmas.cs" />
+     <Compile Include="Assets\Scripts\Containers\ContainerEquipamentos.cs" />
+     <Compile Include="Assets\Scripts\Containers\ContainerInimigos.cs" />
+     <Compile Include="Assets\Scripts\Containers\ContainerMagias.cs" />
+     <Compile Include="Assets\Scripts\Containers\ContainerPersonagens.cs" />
+     <Compile Include="Assets\Scripts\Controladores\ControladorInventario.cs" />
      <Compile Include="Assets\Scripts\Controladores\ControladorQuests.cs" />
      <Compile Include="Assets\Scripts\Controladores\GameMasterCombate.cs" />
      <Compile Include="Assets\Scripts\Controladores\GameMasterFora.cs" />
@@ -67,19 +75,19 @@
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\VilaMedievalAssets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>D:/Libraries/GitHub/MusiKO/muziKO/Projeto Unity MusiKO/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Fernando/Documents/GitHub/MusikoAtual/muziKO/Projeto Unity MusiKO/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>D:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

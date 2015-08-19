@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Batalha\ControladorTurno.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controladores\GameMasterCombate.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonCamera.js" Line="159" Column="20" />
-      <File FileName="Assets\Scripts\Personagem\ForaCombate.cs" Line="5" Column="23" />
-      <File FileName="Assets\Scripts\Personagem\CameraScript.cs" Line="24" Column="34" />
-      <File FileName="Assets\Scripts\Triggers\Quests.cs" Line="33" Column="1" />
-      <File FileName="Assets\Scripts\Batalha\ControladorTurno.cs" Line="44" Column="1" />
+      <File FileName="Assets\Scripts\Batalha\ControladorTurno.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Batalha\GerarTerrenos.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Batalha\PainelPersonagem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controladores\GameMasterCombate.cs" Line="125" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
