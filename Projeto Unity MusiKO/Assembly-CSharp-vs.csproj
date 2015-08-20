@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Classes\Adicionais.cs" />
      <Compile Include="Assets\Scripts\Classes\Armas.cs" />
      <Compile Include="Assets\Scripts\Classes\Equipamentos.cs" />
+     <Compile Include="Assets\Scripts\Classes\Experiencia.cs" />
      <Compile Include="Assets\Scripts\Classes\Inimigos.cs" />
      <Compile Include="Assets\Scripts\Classes\Magias.cs" />
      <Compile Include="Assets\Scripts\Classes\Personagens.cs" />
@@ -66,10 +67,16 @@
      <Compile Include="Assets\Scripts\Containers\ContainerMagias.cs" />
      <Compile Include="Assets\Scripts\Containers\ContainerPersonagens.cs" />
      <Compile Include="Assets\Scripts\Controladores\ControladorInventario.cs" />
+     <Compile Include="Assets\Scripts\Controladores\ControladorPainelLootIdividual.cs" />
+     <Compile Include="Assets\Scripts\Controladores\ControladorProgressoLoot.cs" />
      <Compile Include="Assets\Scripts\Controladores\ControladorQuests.cs" />
+     <Compile Include="Assets\Scripts\Controladores\ControladorTelaXP.cs" />
      <Compile Include="Assets\Scripts\Controladores\GameMasterCombate.cs" />
      <Compile Include="Assets\Scripts\Controladores\GameMasterFora.cs" />
+     <Compile Include="Assets\Scripts\Controladores\GameMasterLoot.cs" />
+     <Compile Include="Assets\Scripts\Controladores\GerarLoot.cs" />
      <Compile Include="Assets\Scripts\Database\DadosArmas.cs" />
+     <Compile Include="Assets\Scripts\Database\DadosBatalha.cs" />
      <Compile Include="Assets\Scripts\Database\DadosInventario.cs" />
      <Compile Include="Assets\Scripts\Database\DadosPersonagens.cs" />
      <Compile Include="Assets\Scripts\Database\DadosProgressoJogo.cs" />
