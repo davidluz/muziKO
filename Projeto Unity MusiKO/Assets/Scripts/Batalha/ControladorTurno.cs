@@ -17,19 +17,20 @@ public class ControladorTurno : MonoBehaviour {
 	public Sprite MinhaFoto;
 	public int QuantidadeMovimento = 2;
 	public int QuantidadeAtaque = 1;
+	public float Dano;
 	public int posicaoX = 0;
 	public int posicaoY = 0;
 	public int[] ListaMagias;
 	public Slider ExemploSlider;
 	public Slider ControladorVida;
-	public Canvas AjudanteCanvas;
+	public GameObject AjudanteCanvas;
 
 	public Text ExemploTextoCombate;
 
 
 
 	void Start(){
-	
+		AjudanteCanvas = GameObject.Find("MeuPreciosoCanvas");
 
 		ControladorVida = Instantiate(ExemploSlider) as Slider;
 		ControladorVida.transform.SetParent(AjudanteCanvas.transform);

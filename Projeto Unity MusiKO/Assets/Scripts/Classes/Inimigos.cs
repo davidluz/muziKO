@@ -6,6 +6,8 @@ public class Inimigos : MonoBehaviour {
 	public int ID;
 	public string Nome;
 	public int Agilidade;
+	public float HP;
+	public float MP;
 	public int Forca;
 	public int Stamina;
 	public int Defesa;

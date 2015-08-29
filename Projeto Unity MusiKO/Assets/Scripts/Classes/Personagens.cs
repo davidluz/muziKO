@@ -13,6 +13,8 @@ public class Personagens : MonoBehaviour {
 	public float HP;
 	public float MP;
 	public int QuantidadeMovimento;
+	public int QuantidadeAtaque;
 	public Sprite MinhaFoto;
+	public int[] Magias;
 
 }

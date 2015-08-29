@@ -12,6 +12,9 @@ public class DadosPersonagens : MonoBehaviour {
 	public int[] Experiencia;
 	public int[] Nivel;
 	public float[] VidaAtual;
+	public int[,] Equipamento;
+	public int[] Arma;
+	public bool[] EstouNaParty;
 
 	// Use this for initialization
 	void Awake () {
@@ -38,6 +41,9 @@ public class DadosPersonagens : MonoBehaviour {
 		data.Experiencia = Experiencia;
 		data.Nivel = Nivel;
 		data.VidaAtual = VidaAtual;
+		data.Equipamento = Equipamento;
+		data.Arma = Arma;
+		data.EstouNaParty = EstouNaParty;
 
 		bf.Serialize(file, data);
 		file.Close();
@@ -57,6 +63,9 @@ public class DadosPersonagens : MonoBehaviour {
 			Experiencia = data.Experiencia;
 			Nivel = data.Nivel;
 			VidaAtual = data.VidaAtual;
+			Equipamento = data.Equipamento;
+			Arma = data.Arma;
+			EstouNaParty = data.EstouNaParty;
 		}
 
 	}//load
@@ -69,4 +78,7 @@ class DadosJogadores{
 	public int[] Experiencia;
 	public int[] Nivel;
 	public float[] VidaAtual;
+	public int[,] Equipamento;
+	public int[] Arma;
+	public bool[] EstouNaParty;
 }

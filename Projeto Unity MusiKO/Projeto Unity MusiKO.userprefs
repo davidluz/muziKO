@@ -1,23 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controladores\ControladorTelaXP.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Controladores\GameMasterCombate.cs">
     <Files>
-      <File FileName="Assets\Scripts\Controladores\GerarLoot.cs" Line="157" Column="1" />
-      <File FileName="Assets\Scripts\Controladores\ControladorProgressoLoot.cs" Line="29" Column="3" />
-      <File FileName="Assets\Scripts\Database\DadosPersonagens.cs" Line="12" Column="26" />
-      <File FileName="Assets\Scripts\Database\DadosBatalha.cs" Line="7" Column="49" />
-      <File FileName="Assets\Scripts\Classes\Experiencia.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Controladores\ControladorPainelLootIdividual.cs" Line="17" Column="1" />
-      <File FileName="Assets\Scripts\Controladores\GameMasterCombate.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Batalha\ControladorTurno.cs" Line="59" Column="40" />
-      <File FileName="Assets\Scripts\Containers\ContainerArmas.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Database\DadosArmas.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Containers\ContainerEquipamentos.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Classes\Equipamentos.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Database\DadosInventario.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Controladores\ControladorTelaXP.cs" Line="80" Column="72" />
-      <File FileName="Assets\Scripts\Containers\ContainerPersonagens.cs" Line="8" Column="39" />
-      <File FileName="Assets\Scripts\Classes\Personagens.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controladores\GameMasterCombate.cs" Line="485" Column="7" />
+      <File FileName="Assets\Scripts\Batalha\GerarTerrenos.cs" Line="20" Column="33" />
+      <File FileName="Assets\Scripts\Classes\Terreno.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Batalha\ControladorTurno.cs" Line="22" Column="21" />
+      <File FileName="Assets\Scripts\Database\DadosCombate.cs" Line="9" Column="31" />
+      <File FileName="Assets\Scripts\Database\DadosProgressoJogo.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\UI\InicioDeJogo.cs" Line="14" Column="39" />
+      <File FileName="Assets\Scripts\Database\DadosPersonagens.cs" Line="17" Column="28" />
+      <File FileName="Assets\Scripts\Containers\ContainerInimigos.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Containers\ContainerPersonagens.cs" Line="8" Column="38" />
+      <File FileName="Assets\Scripts\Classes\Inimigos.cs" Line="16" Column="20" />
+      <File FileName="Assets\Scripts\Classes\Personagens.cs" Line="18" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

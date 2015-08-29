@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Classes\Inimigos.cs" />
      <Compile Include="Assets\Scripts\Classes\Magias.cs" />
      <Compile Include="Assets\Scripts\Classes\Personagens.cs" />
+     <Compile Include="Assets\Scripts\Classes\Terreno.cs" />
      <Compile Include="Assets\Scripts\Containers\ContainerAdicionais.cs" />
      <Compile Include="Assets\Scripts\Containers\ContainerArmas.cs" />
      <Compile Include="Assets\Scripts\Containers\ContainerEquipamentos.cs" />
@@ -77,13 +78,16 @@
      <Compile Include="Assets\Scripts\Controladores\GerarLoot.cs" />
      <Compile Include="Assets\Scripts\Database\DadosArmas.cs" />
      <Compile Include="Assets\Scripts\Database\DadosBatalha.cs" />
+     <Compile Include="Assets\Scripts\Database\DadosCombate.cs" />
      <Compile Include="Assets\Scripts\Database\DadosInventario.cs" />
+     <Compile Include="Assets\Scripts\Database\DadosParty.cs" />
      <Compile Include="Assets\Scripts\Database\DadosPersonagens.cs" />
      <Compile Include="Assets\Scripts\Database\DadosProgressoJogo.cs" />
      <Compile Include="Assets\Scripts\NPCs\NPCNormal.cs" />
      <Compile Include="Assets\Scripts\Personagem\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Personagem\ForaCombate.cs" />
      <Compile Include="Assets\Scripts\Triggers\Quests.cs" />
+     <Compile Include="Assets\Scripts\UI\InicioDeJogo.cs" />
      <Compile Include="Assets\VilaMedievalAssets\FrameHate\TopViewMobileTown\Scripts\Click.cs" />
      <Compile Include="Assets\VilaMedievalAssets\FrameHate\TopViewMobileTown\Scripts\Movement.cs" />
      <Compile Include="Assets\VilaMedievalAssets\Standard Assets\Water (Basic)\Sources\Scripts\WaterSimple.cs" />

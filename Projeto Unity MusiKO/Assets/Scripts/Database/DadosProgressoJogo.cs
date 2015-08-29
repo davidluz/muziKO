@@ -1,15 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DadosProgressoJogo : MonoBehaviour {
 
+public class DadosProgressoJogo : MonoBehaviour {
+	
+	public static DadosProgressoJogo ControleDadosProgresso;
+	
+
+	
+	
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		
+		if(ControleDadosProgresso == null){
+			
+			DontDestroyOnLoad(gameObject);
+			ControleDadosProgresso = this;
+			
+		}else if(ControleDadosProgresso != this){
+			
+			Destroy(gameObject);
+		}
+		
+		
+	}//awake
 	
-	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
