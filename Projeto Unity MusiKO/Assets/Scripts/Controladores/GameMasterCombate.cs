@@ -46,6 +46,7 @@ public class GameMasterCombate : MonoBehaviour {
 
 	public GameObject Painel;
 	public static bool Rodando = true;
+	public static bool ChaveDeSeguraca = true;
 
 	public Image Exemplo;
 	public int ContadorPersonagens;
@@ -66,8 +67,24 @@ public class GameMasterCombate : MonoBehaviour {
 	public GameObject TextoErro;
 	Animator AjudanteTextoErro;
 
+	public GameObject PainelFimdeJogo;
+	PainelFimBatalha AjudantePainelFimDeJogo;
+
+	private int theScreenWidth;
+	private int theScreenHeight;
+
+	public int Distancia = 10;
+	public int velocidadeDoAjudanteCamera = 1;
+
 	// Use this for initialization
 	void Start () {
+
+		theScreenWidth = Screen.width;
+		theScreenHeight = Screen.height;
+
+		ChaveDeSeguraca = true;
+
+		AjudantePainelFimDeJogo = PainelFimdeJogo.GetComponent<PainelFimBatalha>();
 
 		ContainerInimigos AjudanteTemporarioInimigos = ContainerDeInimigos.GetComponent<ContainerInimigos>();
 
@@ -131,23 +148,26 @@ public class GameMasterCombate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Rodando == true) {
+		if ((Rodando == true)&&(ChaveDeSeguraca==true)) {
 			for (int x = 0; x<ContadorPersonagens; x++) {
-				AjudanteTurno [x] = AjudanteTurno [x] + (AjudantePersonagens [x].Agilidade) / 10;
-				PersonagensImg [x].rectTransform.anchoredPosition = new Vector2 ((AjudanteTurno [x]*RateDaBarra+LimiteInferior), PersonagensImg [x].rectTransform.anchoredPosition.y);
-				if (AjudanteTurno [x] >= TamanhoTurno) {
-
-					AjudanteTextoErro.SetBool("Hit",false);
-
-					CirculoAcao.SetActive(true);
-					CirculoAcao.transform.position = new Vector3(Personagens[x].transform.position.x+0.4f,2,Personagens[x].transform.position.z-1);
-					AjudanteDaCamera = new Vector3(0+Personagens[x].transform.position.x,10,-10+Personagens[x].transform.position.z);
-					Rodando = false;
-					Turno = x;
-					PersonagensImg [x].rectTransform.anchoredPosition = new Vector2 (301, PersonagensImg [x].rectTransform.anchoredPosition.y);
-					FazerPainel(AjudantePersonagens[x].posicaoX,AjudantePersonagens[x].posicaoY);
-
+				if(AjudantePersonagens[x].EstouVivo==true){
+					AjudanteTurno [x] = AjudanteTurno [x] + (AjudantePersonagens [x].Agilidade) / 10;
+					PersonagensImg [x].rectTransform.anchoredPosition = new Vector2 ((AjudanteTurno [x]*RateDaBarra+LimiteInferior), PersonagensImg [x].rectTransform.anchoredPosition.y);
+					if (AjudanteTurno [x] >= TamanhoTurno) {
+						
+						AjudanteTextoErro.SetBool("Hit",false);
+						
+						CirculoAcao.SetActive(true);
+						CirculoAcao.transform.position = new Vector3(Personagens[x].transform.position.x+0.4f,2,Personagens[x].transform.position.z-1);
+						AjudanteDaCamera = new Vector3(0+Personagens[x].transform.position.x,10,-10+Personagens[x].transform.position.z);
+						Rodando = false;
+						Turno = x;
+						PersonagensImg [x].rectTransform.anchoredPosition = new Vector2 (301, PersonagensImg [x].rectTransform.anchoredPosition.y);
+						FazerPainel(AjudantePersonagens[x].posicaoX,AjudantePersonagens[x].posicaoY);
+						
+					}
 				}
+
 			}//fim for
 		} else {
 			if(Input.GetKey("space")){
@@ -167,6 +187,41 @@ public class GameMasterCombate : MonoBehaviour {
 				print("Foi o Turno de "+AjudantePersonagens[Turno].Nome);
 			}
 		}
+
+		int AjudanteX = 0;
+		int AjudanteZ = 0;
+		if (Input.mousePosition.x > theScreenWidth - Distancia){
+
+			AjudanteX = AjudanteX+velocidadeDoAjudanteCamera;
+			AjudanteDaCamera = new Vector3(MinhaCamera.transform.position.x+velocidadeDoAjudanteCamera,MinhaCamera.transform.position.y,MinhaCamera.transform.position.z + AjudanteZ);// move on +X axis
+
+		}
+
+
+		if (Input.mousePosition.x < 0 + Distancia){
+
+			AjudanteX = AjudanteX-velocidadeDoAjudanteCamera;
+			AjudanteDaCamera = new Vector3(MinhaCamera.transform.position.x-velocidadeDoAjudanteCamera,MinhaCamera.transform.position.y,MinhaCamera.transform.position.z + AjudanteZ);// move on -X axis
+
+		}
+
+		if (Input.mousePosition.y > theScreenHeight - Distancia){
+
+			AjudanteZ = AjudanteZ +velocidadeDoAjudanteCamera;
+			AjudanteDaCamera = new Vector3(MinhaCamera.transform.position.x + AjudanteX,MinhaCamera.transform.position.y,MinhaCamera.transform.position.z+velocidadeDoAjudanteCamera);
+
+			// move on +Z axis
+
+		}
+
+		if (Input.mousePosition.y < 0 + Distancia){
+
+			AjudanteZ = AjudanteZ -velocidadeDoAjudanteCamera;
+			AjudanteDaCamera = new Vector3(MinhaCamera.transform.position.x + AjudanteX,MinhaCamera.transform.position.y,MinhaCamera.transform.position.z-velocidadeDoAjudanteCamera);// move on -Z axis
+
+		}
+
+
 		if(MinhaCamera.transform.position!=AjudanteDaCamera){
 			float diferencaX = (MinhaCamera.transform.position.x - AjudanteDaCamera.x)* Time.deltaTime * VelocidadeCamera;
 			float diferencaZ = (MinhaCamera.transform.position.z - AjudanteDaCamera.z)* Time.deltaTime * VelocidadeCamera;
@@ -666,7 +721,40 @@ public class GameMasterCombate : MonoBehaviour {
 								//codigo ataque
 								//inserir formula ataque
 								//inserir Todos as outras coisas para
-								AjudantePersonagens[posicaoAtacado].TirarVida(10);
+								bool EstouVivo = AjudantePersonagens[posicaoAtacado].TirarVida(10);
+
+								if(EstouVivo==false){
+									PersonagensImg[posicaoAtacado].enabled = false;
+									int contadorAliados = 0;
+									int contadorInimigos = 0;
+
+									for(int zeta = 0;zeta<ContadorPersonagens;zeta++){
+										if((AjudantePersonagens[zeta].SouEu==true)&&(AjudantePersonagens[zeta].EstouVivo==true)){
+											contadorAliados = contadorAliados+1;
+										}else if((AjudantePersonagens[zeta].SouEu==false)&&(AjudantePersonagens[zeta].EstouVivo==true)){
+											contadorInimigos = contadorInimigos+1;
+										}
+									}
+
+									print (contadorAliados);
+									print (contadorInimigos);
+
+									if(contadorAliados<=0){
+										ChaveDeSeguraca = false;
+										AjudantePainelFimDeJogo.Vitoria = false;
+										AjudantePainelFimDeJogo.MudarTexto("Derrota");
+										AjudantePainelFimDeJogo.FazerSubir();
+									}
+									if(contadorInimigos<=0){
+										ChaveDeSeguraca = false;
+										AjudantePainelFimDeJogo.Vitoria = true;
+										AjudantePainelFimDeJogo.MudarTexto("Vitoria");
+										AjudantePainelFimDeJogo.FazerSubir();
+									}
+
+
+
+								}
 
 								print(AjudantePersonagens[Turno].Nome+" Atacou "+AjudantePersonagens[posicaoAtacado].Nome);
 
@@ -819,7 +907,41 @@ public class GameMasterCombate : MonoBehaviour {
 									//codigo ataque Magico, Todas as verificaçoes de dano e diversas formulas de dano entram aqui
 									//inserir formula ataque
 									//inserir Todos as outras coisas para
-									AjudantePersonagens[posicaoAtacado].TirarVida(10);
+
+
+									bool EstouVivo = AjudantePersonagens[posicaoAtacado].TirarVida(10);
+									
+									if(EstouVivo==false){
+										PersonagensImg[posicaoAtacado].enabled = false;
+										int contadorAliados = 0;
+										int contadorInimigos = 0;
+										
+										for(int zeta = 0;zeta<ContadorPersonagens;zeta++){
+											if((AjudantePersonagens[zeta].SouEu==true)&&(AjudantePersonagens[zeta].EstouVivo==true)){
+												contadorAliados = contadorAliados+1;
+											}else if((AjudantePersonagens[zeta].SouEu==false)&&(AjudantePersonagens[zeta].EstouVivo==true)){
+												contadorInimigos = contadorInimigos+1;
+											}
+										}
+										print (contadorAliados);
+										print (contadorInimigos);
+										
+										if((contadorAliados<=0)&&(contadorInimigos>0)){
+											ChaveDeSeguraca = false;
+											AjudantePainelFimDeJogo.Vitoria = false;
+											AjudantePainelFimDeJogo.MudarTexto("Derrota");
+											AjudantePainelFimDeJogo.FazerSubir();
+										}
+										if((contadorInimigos<=0)&&(contadorAliados>0)){
+											ChaveDeSeguraca = false;
+											AjudantePainelFimDeJogo.Vitoria = true;
+											AjudantePainelFimDeJogo.MudarTexto("Vitoria");
+											AjudantePainelFimDeJogo.FazerSubir();
+										}
+										
+										
+										
+									}
 									
 									print(AjudantePersonagens[Turno].Nome+" Soltou a Magia "+AjudanteMagias[AjudantePersonagens[Turno].ListaMagias[NumeroMagia]].Nome+" em "+AjudantePersonagens[posicaoAtacado].Nome);
 									

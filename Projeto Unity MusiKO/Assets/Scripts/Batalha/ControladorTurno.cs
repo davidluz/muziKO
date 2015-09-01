@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ControladorTurno : MonoBehaviour {
 
 	public bool SouEu;
+	public bool EstouVivo;
 	public string Nome;
 	public float Agilidade;
 	public float HPMax;
@@ -30,6 +31,7 @@ public class ControladorTurno : MonoBehaviour {
 
 
 	void Start(){
+		EstouVivo = true;
 		AjudanteCanvas = GameObject.Find("MeuPreciosoCanvas");
 
 		ControladorVida = Instantiate(ExemploSlider) as Slider;
@@ -46,18 +48,28 @@ public class ControladorTurno : MonoBehaviour {
 		ControladorVida.transform.position = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y+1,gameObject.transform.position.z);
 	}
 
-	public void TirarVida(float quantidade){
+	public bool TirarVida(float quantidade){
 
 		if((HPAtual-quantidade)<=0){
+
+			TextoDeCombate("Morto");
+
+			EstouVivo = false;
+
+			ControladorVida.value = 0;
+
+			return false;
 			//Morrer
 		}else{
 			HPAtual = HPAtual-quantidade;
 
 			float porcentagem  = 100*HPAtual/HPMax;
 
-			TextoDeCombate(quantidade);
+			TextoDeCombate(quantidade.ToString());
 
 			ControladorVida.value = porcentagem;
+
+			return true;
 
 
 
@@ -66,7 +78,7 @@ public class ControladorTurno : MonoBehaviour {
 
 	}
 
-	public void TextoDeCombate(float quantidade){
+	public void TextoDeCombate(string quantidade){
 		Text temp = Instantiate(ExemploTextoCombate) as Text;
 		temp.transform.SetParent(AjudanteCanvas.transform);
 		temp.transform.localScale = new Vector3(0.08f,0.08f,1);
@@ -74,7 +86,7 @@ public class ControladorTurno : MonoBehaviour {
 		//temp.transform.position = 
 		temp.name = Nome.ToString();
 
-		temp.text = quantidade.ToString();
+		temp.text = quantidade;
 		temp.GetComponent<Animator>().SetTrigger("Hit");
 		Destroy(temp.gameObject,2);
 
